@@ -20,3 +20,4 @@ document.querySelector("a").getAttribute("href");
 document.querySelector("a").setAttribute("href", "https://aksh-51n9h.github.io/");
 document.querySelector("a").innerHTML = "My Website";
 
+// finished section 11
