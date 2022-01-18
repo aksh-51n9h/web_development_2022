@@ -5,44 +5,56 @@ var btnList = document.querySelectorAll(".drum");
 for (var i = 0; i < btnList.length; i++) {
     var btn = btnList[i].addEventListener("click", function () {
         var btnInnerHTML = this.innerHTML;
-        var audioSource = "";
-
-        switch (btnInnerHTML) {
-            case "w":
-                audioSource = "sounds/tom-1.mp3";
-                break;
-
-            case "a":
-                audioSource = "sounds/tom-2.mp3";
-                break;
-
-            case "s":
-                audioSource = "sounds/tom-3.mp3";
-                break;
-
-            case "d":
-                audioSource = "sounds/tom-4.mp3";
-                break;
-
-            case "j":
-                audioSource = "sounds/snare.mp3";
-                break;
-
-            case "k":
-                audioSource = "sounds/crash.mp3";
-                break;
-
-            case "l":
-                audioSource = "sounds/kick-bass.mp3";
-                break;
-
-            default:
-                audioSource = "";
-        }
-
-        var sound = new Audio(audioSource);
-        sound.play();
+        playSound(btnInnerHTML);
     });
+
+}
+
+// #170 challenge 1
+document.addEventListener("keypress", function (event) {
+    var key = event.key;
+    playSound(key);
+});
+
+function playSound(btn) {
+
+    var audioSource = "";
+
+    switch (btn) {
+        case "w":
+            audioSource = "sounds/tom-1.mp3";
+            break;
+
+        case "a":
+            audioSource = "sounds/tom-2.mp3";
+            break;
+
+        case "s":
+            audioSource = "sounds/tom-3.mp3";
+            break;
+
+        case "d":
+            audioSource = "sounds/tom-4.mp3";
+            break;
+
+        case "j":
+            audioSource = "sounds/snare.mp3";
+            break;
+
+        case "k":
+            audioSource = "sounds/crash.mp3";
+            break;
+
+        case "l":
+            audioSource = "sounds/kick-bass.mp3";
+            break;
+
+        default:
+            audioSource = "";
+    }
+
+    var sound = new Audio(audioSource);
+    sound.play();
 }
 
 // // #165 challenge 1
