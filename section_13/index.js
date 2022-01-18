@@ -6,6 +6,7 @@ for (var i = 0; i < btnList.length; i++) {
     var btn = btnList[i].addEventListener("click", function () {
         var btnInnerHTML = this.innerHTML;
         playSound(btnInnerHTML);
+        buttonAnimation(btnInnerHTML);
     });
 
 }
@@ -14,7 +15,17 @@ for (var i = 0; i < btnList.length; i++) {
 document.addEventListener("keypress", function (event) {
     var key = event.key;
     playSound(key);
+    buttonAnimation(key);
 });
+
+function buttonAnimation(btn) {
+    var currentBtn = document.querySelector("." + btn);
+    currentBtn.classList.add("pressed");
+
+    setTimeout(function () {
+        currentBtn.classList.remove("pressed");
+    }, 100);
+}
 
 function playSound(btn) {
 
