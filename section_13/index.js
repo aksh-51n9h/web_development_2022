@@ -8,5 +8,7 @@ for (var i = 0; i < btnList.length; i++){
 
 //triggered when button in clicked
 function handleClick() {
-    alert("I got clicked!");
+    // #165 challenge 1
+    var sound = new Audio("./sounds/tom-1.mp3");
+    sound.play();
 }
