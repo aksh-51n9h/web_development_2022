@@ -8,7 +8,11 @@ for (var i = 0; i < btnList.length; i++){
 
 //triggered when button in clicked
 function handleClick() {
-    // #165 challenge 1
-    var sound = new Audio("./sounds/tom-1.mp3");
-    sound.play();
+    // #165 challenge 3
+    this.style.color = "white";
 }
+
+
+// // #165 challenge 1
+// var sound = new Audio("./sounds/tom-1.mp3");
+// sound.play();
