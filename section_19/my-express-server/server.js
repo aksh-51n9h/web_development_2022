@@ -15,6 +15,10 @@ app.get("/about", function (req, res) {
     res.send("Author: Akshay");
 });
 
+app.get("/hobbies", function (req, res) {
+    res.send("<ul><li>Cricket</li><li>Video games</li><li>Content creation</li></ul>");
+});
+
 app.listen(3000, function () { 
     console.log("server started at port 3000");
 });
