@@ -15,8 +15,11 @@ app.get("/", function (req, res) {
             var temp = weatherData.main.temp;
             var weatherDescription = weatherData.weather[0].description;
 
-            console.log(weatherDescription);
-            res.send("<h1>The temperature in India is "+ temp + " degree Celcius.</h1>");
+            // console.log(weatherDescription);
+
+            var resHTML = "<h1>The weather currently is " + weatherDescription + ".<br>" + "The temperature in India is " + temp + " degree Celcius.</h1>";
+            
+            res.send(resHTML);
         });
     });
 
