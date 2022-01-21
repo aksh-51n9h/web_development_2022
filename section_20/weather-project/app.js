@@ -14,12 +14,18 @@ app.get("/", function (req, res) {
             var weatherData = JSON.parse(data);
             var temp = weatherData.main.temp;
             var weatherDescription = weatherData.weather[0].description;
-
+            var weatherIconCode = weatherData.weather[0].icon;
             // console.log(weatherDescription);
 
-            var resHTML = "<h1>The weather currently is " + weatherDescription + ".<br>" + "The temperature in India is " + temp + " degree Celcius.</h1>";
+            var iconUrl = "http://openweathermap.org/img/wn/" + weatherIconCode + "@2x.png";
             
-            res.send(resHTML);
+            
+            res.write("<h1>The weather currently is " + weatherDescription + ".");
+            res.write("<img src=\""+iconUrl+"\"></img><br>");
+
+            res.write("The temperature in Kanpur, India is " + temp + " degree Celcius.</h1>");
+
+            res.send();
         });
     });
 
