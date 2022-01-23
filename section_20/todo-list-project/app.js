@@ -5,27 +5,28 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use(express.static("public"));
 
-var items = [];
+let items = [];
 
 app.get("/", function (req, res) {
     // res.sendFile(__dirname+"/index.html");
 
-    var today = new Date();
+    let today = new Date();
     
-    var options = {
+    let options = {
         weekday: "long",
         day: "numeric",
         month: "long"
     }
 
-    var day = today.toLocaleDateString("en-US", options);
+    let day = today.toLocaleDateString("en-US", options);
 
     res.render("list", { dayName: day , items: items});
 });
 
 app.post("/", function (req, res) { 
-    var item = req.body.newItem;
+    let item = req.body.newItem;
     items.push(item);
 
     res.redirect("/");
