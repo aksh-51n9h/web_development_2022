@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-list</title>
+</head>
+<body>
+    <h1><%=dayName%></h1>
+
+    <p>My Todo-list</p>
+    <ul>
+        <% var i=0; %>
+        <% while(i < items.length) {%>
+        <% var item = items[i]; %>
+        <li><%=item %></li>
+        <% i++; %>
+        <% } %>
+    </ul>
+
+    <form action="/" method="post">
+        <input type="text" name="newItem">
+        <button type="submit" name="addButton">Add</button>
+    </form>
+</body>
+</html>
