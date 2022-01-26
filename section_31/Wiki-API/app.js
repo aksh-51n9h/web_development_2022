@@ -22,13 +22,36 @@ const articleSchema = {
 
 const Article = mongoose.model("Article", articleSchema);
 
-app.get("/articles", function (req, res) { 
+//GET all articles
+app.get("/articles", function (req, res) {
   Article.find(function (err, result) {
     if (err) {
       res.send(err);
     } else {
       res.send(result);
     }
+  });
+});
+
+// POST a new article
+app.post("/articles", function (req, res) {
+  const title = req.body.title;
+  const content = req.body.content;
+
+  const newArticle = new Article({
+    title: title,
+    content: content
+  });
+
+  newArticle.save(function (err) { 
+    let message = "";
+    if (!err) {
+      message = "Article saved successfully";
+    } else {
+      message = err;
+    }
+
+    res.send(message);
   });
 });
 
