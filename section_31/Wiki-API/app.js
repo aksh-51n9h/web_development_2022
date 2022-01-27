@@ -85,7 +85,28 @@ app.route("/articles/:articleTitle")
     });
   })
 
-  .post(function (req, res) { })
+  .put(function (req, res) {
+    const articleTitle = req.params.articleTitle;
+
+    // updated title and content
+    const title = req.body.title;
+    const content = req.body.content;
+
+
+    Article.replaceOne(
+      { title: articleTitle },
+      {
+        title: title, content: content
+      },
+      function (err) {
+        if (!err) {
+          res.send("Successfully updated article.");
+        } else {
+          console.log(err);
+          res.send("Some error occured.");
+        }
+      });
+  })
 
   .delete(function (req, res) { });
 
