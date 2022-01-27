@@ -22,7 +22,7 @@ const articleSchema = {
 
 const Article = mongoose.model("Article", articleSchema);
 
-// Chained route handlers
+// articles - Chained route handlers 
 app.route("/articles")
   .get(function (req, res) {
     Article.find(function (err, result) {
@@ -54,7 +54,7 @@ app.route("/articles")
       res.send(message);
     });
   })
-  
+
   .delete(function (req, res) {
     Article.deleteMany(function (err) {
       let message = "";
@@ -67,6 +67,27 @@ app.route("/articles")
       res.send(message);
     });
   });
+
+
+// articles/articleTitle - chained route handlers
+app.route("/articles/:articleTitle")
+  .get(function (req, res) {
+    const articleTitle = req.params.articleTitle;
+    Article.findOne({ title: articleTitle }, function (err, result) {
+      if (err) {
+        console.log(err);
+        res.send("Some error occured");
+      } else if (result) {
+        res.send(result);
+      } else {
+        res.send("No articles matching that title was found.");
+      }
+    });
+  })
+
+  .post(function (req, res) { })
+
+  .delete(function (req, res) { });
 
 // server setup
 app.listen(3000, function () {
