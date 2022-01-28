@@ -108,6 +108,23 @@ app.route("/articles/:articleTitle")
       });
   })
 
+  .patch(function (req, res) {
+    const articleTitle = req.params.articleTitle;
+
+    const reqBody = req.body;
+
+    Article.updateOne({ title: articleTitle },
+      { $set: reqBody },
+      function (err) {
+        if (!err) {
+          res.send("Successfully updated article.");
+        } else {
+          console.log(err);
+          res.send("Some error occured.");
+        }
+      });
+  })
+
   .delete(function (req, res) { });
 
 // server setup
