@@ -125,7 +125,20 @@ app.route("/articles/:articleTitle")
       });
   })
 
-  .delete(function (req, res) { });
+  .delete(function (req, res) { 
+    const articleTitle = req.params.articleTitle;
+
+    Article.deleteOne({ title: articleTitle }, function (err) {
+      let message = "";
+      if (!err) {
+        message = "Successfully deleted article.";
+      } else {
+        message = err;
+      }
+
+      res.send(message);
+    });
+  });
 
 // server setup
 app.listen(3000, function () {
