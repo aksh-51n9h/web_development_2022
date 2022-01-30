@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 // const mongooseEncryption = require("mongoose-encryption");
 const md5 = require("md5");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const app = express();
 
@@ -38,19 +40,24 @@ app.route("/login")
 
     .post(function (req, res) {
         const email = req.body.username;
-        const password = md5(req.body.password);
+        const password = req.body.password;
 
         User.findOne({ email: email }, function (err, foundUser) {
             if (err) {
                 let message = "Error occured! No user found.";
                 res.send(message);
             } else {
-                if (foundUser.password === password) {
-                    res.render("secrets");
-                } else {
-                    let message = "Error occured! Wrong password";
-                    res.send(message);
-                }
+
+                bcrypt.compare(password, foundUser.password, function (err, result) {
+                    if (result == true) {
+                        res.render("secrets");
+                    } else if (err) {
+                        console.log(err);
+                    } else {
+                        let message = "Error occured! Wrong password";
+                        res.send(message);
+                    }
+                });
             }
         });
     });
@@ -62,20 +69,24 @@ app.route("/register")
 
     .post(function (req, res) {
         const email = req.body.username;
-        const password = md5(req.body.password);
+        const password = req.body.password;
 
-        const newUser = new User({
-            email: email,
-            password: password
-        });
 
-        newUser.save(function (err) {
-            if (err) {
-                let message = "Error occured! Unable to register.";
-                res.send(message);
-            } else {
-                res.render("secrets");
-            }
+        bcrypt.hash(password, saltRounds, function (err, hash) {
+            const newUser = new User({
+                email: email,
+                password: hash
+            });
+
+
+            newUser.save(function (err) {
+                if (err) {
+                    let message = "Error occured! Unable to register.";
+                    res.send(message);
+                } else {
+                    res.render("secrets");
+                }
+            });
         });
     });
 
