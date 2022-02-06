@@ -1,0 +1,89 @@
+body{
+    font-family: 'Signika Negative', sans-serif;
+    margin: 0px;
+    text-align: center;
+}
+
+.top-container{
+    position: relative;
+    padding-top: 64px;
+    background-color: #F2F7FF;
+}
+
+.bottom-container{
+    background-color: #B1D0E0;
+    padding: 16px;
+}
+
+h1{
+    color: #1A374D;
+    font-size: 5.625rem;
+    font-family: 'Courgette', cursive;
+    line-height: 1;
+    margin-bottom: 0px;
+}
+
+h2{
+    color: #1A374D;
+    font-size: 2.5rem;
+    font-weight: normal;
+}
+
+h3{
+    color: #406882;
+}
+
+a{
+    color: #406882;
+}
+
+.profile{
+    margin-top: 32px;
+}
+
+.profile>img{
+    height: 196px;
+    width: 196px;
+}
+
+.mob-dev{
+    float: left;
+    margin-right: 30px;
+    width: 25%;
+}
+
+.books-stack{
+    float: right;
+    margin-left: 30px;
+    width: 30%;
+}
+
+.skill-row{
+    width: 50%;
+    margin: 100px auto 100px auto;
+    text-align: left;
+    line-height: 2;
+}
+
+hr{
+    border-color: #406882;
+    border-style: dotted none none none;
+    border-width: 6px;
+    width: 5%;
+}
+
+.intro{
+    width: 75%;
+    margin: 1em auto 1em auto;
+    font-size: 1.25em;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+#upcoming{
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
